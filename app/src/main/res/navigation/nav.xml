@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/main_menu">
+
+    <fragment
+        android:id="@+id/main_menu"
+        android:name="com.example.whac_a_mole.ui.menu.MainMenuFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/main_menu_fragment" >
+        <action
+            android:id="@+id/action_main_menu_to_game"
+            app:destination="@id/game">
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/game"
+        android:name="com.example.whac_a_mole.ui.game.GameProcessFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/game_fragment">
+        <argument
+            android:name="amount"
+            app:argType="integer"
+            android:defaultValue="4" />
+        <action
+            android:id="@+id/action_game_to_result"
+            app:destination="@id/result" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/result"
+        android:name="com.example.whac_a_mole.ui.result.ResultFragment"
+        tools:layout="@layout/result_fragment">
+        <argument
+            android:name="result"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_result_to_main_menu"
+            app:destination="@id/main_menu" />
+    </fragment>
+
+</navigation>
